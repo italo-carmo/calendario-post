@@ -1,0 +1,67 @@
+/* Core + adjustments for export */ 
+:root{ --border:#e5e7eb; --primary:#0b63d9; --radius:16px; }
+*{box-sizing:border-box}
+body{margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; background:#f3f5f9; color:#0b1220}
+.header{ position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 18px; background:#fff; border-bottom:1px solid var(--border) }
+.brand{font-weight:800}
+.toolbar{display:flex; gap:8px; flex-wrap:wrap}
+.btn{border:1px solid var(--border); background:#fff; padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer}
+.btn.primary{background:var(--primary); color:#fff; border-color:transparent}
+input, select{ padding:8px 10px; border:1px solid var(--border); border-radius:10px; background:#fff }
+
+.container{display:grid; grid-template-columns: 420px 1fr; gap:16px; padding:16px}
+.card{background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:16px}
+.card h3{margin:0 0 10px 0}
+.textarea{width:100%; min-height:100px; padding:10px; border:1px solid var(--border); border-radius:12px; resize:vertical; white-space:pre-wrap}
+.day-item{border:1px dashed var(--border); border-radius:12px; padding:10px; margin-bottom:10px}
+.day-title{font-weight:700; margin-bottom:6px; display:flex; justify-content:space-between; color:#334155}
+
+.preview{display:grid; gap:14px}
+.week-header{font-weight:800; padding:8px 12px; border:1px solid var(--border); border-radius:12px; background:#f8fafc; display:flex; align-items:center; justify-content:space-between; gap:10px;}
+.page-tools{display:flex; gap:8px; align-items:center; margin:4px 0 4px 0}
+.page{ width:794px; min-height:1123px; border:1px solid var(--border); border-radius:12px; background:#fff; padding:18px 28px 40px 28px; margin:0 auto; position:relative; }
+.page .footer-note{ position:absolute; bottom:10px; left:28px; right:28px; color:#94a3b8; font-size:12px; display:flex; justify-content:center; }
+
+/* Quill */
+.page .ql-toolbar.ql-snow{ border:1px solid var(--border); border-radius:10px; }
+.page .ql-container.ql-snow{ border:1px solid var(--border); border-radius:10px; min-height: 950px; background:transparent; }
+.page .ql-editor{ min-height:950px; line-height:1.5; }
+.page .ql-editor p{ margin:0 0 .6em 0; }
+
+/* Quill fonts */
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="inter"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="inter"]::before { content:"Inter"; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
+.ql-font-inter{ font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="helvetica"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="helvetica"]::before { content:"Helvetica"; font-family:Helvetica, Arial, sans-serif; }
+.ql-font-helvetica{ font-family:Helvetica, Arial, sans-serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="georgia"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="georgia"]::before { content:"Georgia"; font-family:Georgia, serif; }
+.ql-font-georgia{ font-family:Georgia, serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="times"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="times"]::before { content:"Times New Roman"; font-family:'Times New Roman', Times, serif; }
+.ql-font-times{ font-family:'Times New Roman', Times, serif; }
+
+/* Week cover */
+.week-cover{
+  width:794px; min-height:1123px;
+  border:1px solid #000; border-radius:12px;
+  background:#000; color:#e9d3b3;
+  padding:28px; margin:0 auto; position:relative;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+}
+.week-cover .title{ font-weight:900; font-size:48px; letter-spacing:2px; text-transform:uppercase; }
+.week-cover .subtitle{ margin-top:8px; font-size:28px; color:#ffffff; text-transform:uppercase; }
+.week-cover .footer-note{ position:absolute; bottom:10px; left:28px; right:28px; color:#9ca3af; font-size:12px; display:flex; justify-content:center; }
+
+/* Hide during html2canvas export */
+.hide-export{ display:none !important; }
+
+/* Print */
+@media print{
+  @page{ size: A4; margin: 10mm; }
+  body{ background:#fff; }
+  .header, .card.input, .card.config, .page-tools, .week-header, .ql-toolbar{ display:none !important; }
+  .container{ display:block; padding:0; }
+  .page, .week-cover{ break-inside: avoid; page-break-inside: avoid; margin:0 0 8mm 0; border:none; border-radius:0; width:auto; min-height:auto; }
+}
