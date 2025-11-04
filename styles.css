@@ -19,7 +19,7 @@ input, select{ padding:8px 10px; border:1px solid var(--border); border-radius:1
 .preview{display:grid; gap:14px}
 .week-header{font-weight:800; padding:8px 12px; border:1px solid var(--border); border-radius:12px; background:#f8fafc; display:flex; align-items:center; justify-content:space-between; gap:10px;}
 .page-tools{display:flex; gap:8px; align-items:center; margin:4px 0 4px 0}
-.page{ width:794px; min-height:1123px; border:1px solid var(--border); border-radius:12px; background:#fff; padding:18px 28px 40px 28px; margin:0 auto; position:relative; }
+.page{ width:794px; min-height:1123px; border:none; border-radius:12px; background:#fff; padding:18px 28px 40px 28px; margin:0 auto; position:relative; }
 .page .footer-note{ position:absolute; bottom:10px; left:28px; right:28px; color:#94a3b8; font-size:12px; display:flex; justify-content:center; }
 
 /* Quill */
@@ -45,7 +45,7 @@ input, select{ padding:8px 10px; border:1px solid var(--border); border-radius:1
 /* Week cover */
 .week-cover{
   width:794px; min-height:1123px;
-  border:1px solid #000; border-radius:12px;
+  border:none; border-radius:12px;
   background:#000; color:#e9d3b3;
   padding:28px; margin:0 auto; position:relative;
   display:flex; align-items:center; justify-content:center; text-align:center;
@@ -57,11 +57,31 @@ input, select{ padding:8px 10px; border:1px solid var(--border); border-radius:1
 /* Hide during html2canvas export */
 .hide-export{ display:none !important; }
 
+.intro-cover{
+  width:794px; min-height:1123px;
+  border:none; border-radius:12px;
+  background-color:#fff;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  padding:28px; margin:0 auto; position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.intro-overlay{
+  position:absolute;
+  top:56%; left:50%;
+  transform:translate(-50%, -50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  color:#000; text-transform:uppercase;
+}
+.intro-month{ font-weight:900; font-size:40px; letter-spacing:2px; text-align:center; }
+.intro-cover .footer-note{ position:absolute; bottom:20px; left:28px; right:28px; display:flex; justify-content:center; color:#000; font-size:12px; text-transform:uppercase; letter-spacing:4px; }
+
 /* Print */
 @media print{
   @page{ size: A4; margin: 10mm; }
   body{ background:#fff; }
   .header, .card.input, .card.config, .page-tools, .week-header, .ql-toolbar{ display:none !important; }
   .container{ display:block; padding:0; }
-  .page, .week-cover{ break-inside: avoid; page-break-inside: avoid; margin:0 0 8mm 0; border:none; border-radius:0; width:auto; min-height:auto; }
+  .page, .week-cover, .intro-cover{ break-inside: avoid; page-break-inside: avoid; margin:0 0 8mm 0; border:none; border-radius:0; width:auto; min-height:auto; }
 }
